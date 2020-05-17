@@ -1,1 +1,10 @@
+import java.util.Scanner;
 
+public class some {
+    public static void main(String[] args){
+        Scanner v = new Scanner(System.in);
+        int x = v.nextInt();
+        int y = v.nextInt();
+        System.out.println("Остаток от деления: " + x % y);
+    }
+}

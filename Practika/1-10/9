@@ -1,0 +1,12 @@
+public class some {
+    public static int sumOfCubes (int[] x) {
+        int exit = 0;
+        for (int i : x) {
+            exit += i * i * i;
+        }
+        return exit;
+    }
+    public static void main (String[] args) {
+        System.out.println(sumOfCubes(new int[]{}));
+    }
+}

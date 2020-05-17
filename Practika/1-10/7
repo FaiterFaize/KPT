@@ -1,0 +1,12 @@
+public class some {
+    public static int addUpTo (int x) {
+        int exit = 0;
+        for (int i = 1; i <= x; i++){
+            exit += i;
+        }
+        return exit;
+    }
+    public static void main (String[] args) {
+        System.out.println(addUpTo(3));
+    }
+}

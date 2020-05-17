@@ -1,0 +1,8 @@
+public class some {
+    public static int nextEdge (int x, int y) {
+        return x + y - 1;
+    }
+    public static void main (String[] args) {
+        System.out.println(nextEdge(5, 7));
+    }
+}

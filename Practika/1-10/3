@@ -1,0 +1,15 @@
+import java.util.Scanner;
+
+public class some {
+    public static void main(String[] args){
+        int chicken = 2;
+        int cows = 4;
+        int pigs = 4;
+        Scanner v = new Scanner(System.in);
+        int x = v.nextInt();
+        int y = v.nextInt();
+        int z = v.nextInt();
+        int e = x * chicken + y * cows + z * pigs;
+        System.out.println("Кол-во ног: " + e);
+    }
+}

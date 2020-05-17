@@ -1,0 +1,10 @@
+import java.util.Scanner;
+
+public class some {
+    public static void main(String[] args){
+        Scanner v = new Scanner(System.in);
+        int b = v.nextInt();
+        int h = v.nextInt();
+        System.out.println("Площадь треугольника: " + (b * h) / 2);
+    }
+}

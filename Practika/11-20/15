@@ -1,0 +1,8 @@
+public class some {
+    public static int getDecimalPlaces (String x) {
+        return x.indexOf(".")!=-1 ? x.length()-x.indexOf(".")-1 : 0;
+    }
+    public static void main (String[] args) {
+        System.out.println(getDecimalPlaces("42"));
+    }
+}

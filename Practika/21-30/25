@@ -1,0 +1,21 @@
+public class some {
+    public static boolean isValidHexCode (String a) {
+        boolean code = true;
+        //Проверка что бы начаналось с #
+        if ((a.charAt(0) != '#') || (a.length() != 7)) {
+            code = false;
+        }
+        for (int i = 1; i < a.length(); i++) {
+            if (!(Character.isDigit(a.charAt(i)))) {
+                // Проверка чтобы были буквы от A до F (и строчные)
+                if ((Character.toUpperCase(a.charAt(i)) < 65) || (Character.toUpperCase(a.charAt(i))) > 70) {
+                    code = false;
+                }
+            }
+        }
+        return code;
+    }
+    public static void main (String[] args) {
+        System.out.println(isValidHexCode("#EAECEe"));
+    }
+}

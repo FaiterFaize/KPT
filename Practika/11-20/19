@@ -1,0 +1,12 @@
+public class some {
+    public static boolean isPrefix (String x, String y) {
+        return x.indexOf (y.substring (0, y.length() - 1)) == 0;
+    }
+    public static boolean isSuffix (String x, String y) {
+        return x.lastIndexOf (y.substring(1)) + y.substring(1).length() == x.length();
+    }
+    public static void main (String[] args) {
+        System.out.println(isPrefix("retrospect", "sub-"));
+        System.out.println(isSuffix("vocation", "-logy"));
+    }
+}

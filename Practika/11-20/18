@@ -1,0 +1,3 @@
+public static boolean isStrangePair (String x, String y) {
+        return ((x.length() == 0) || (y.length()==0)) ? x.equals(y) : (x.charAt(0) == y.charAt(y.length() - 1)) && (y.charAt(0) == x.charAt(x.length() - 1));
+    }

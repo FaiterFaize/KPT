@@ -1,0 +1,31 @@
+import java.util.Arrays;
+
+public class some {
+    public static boolean isValidHexCode (int[] array1, int[] array2) {
+        int exit = 0;
+        //Сортировка для 1 массива
+        Arrays.sort(array1);
+        //Сортировка для 2 массива
+        Arrays.sort(array2);
+        int max = (array1.length -1 > array2.length) ? array1.length -1 : array2.length -1;
+        for (int i = 0; i < max; i++) {
+            if (i < array1.length -1) {
+                if (Arrays.binarySearch(array1, i + 1, array1.length -1, array1[i]) < 0) {
+                    exit++;
+                }
+            }
+            if (i < array2.length -1) {
+                if (Arrays.binarySearch(array2, i + 1, array2.length -1, array2[i]) < 0) {
+                    exit--;
+                }
+            }
+        }
+        //
+        exit += (array1.length == 1) ? 1 : (array1[array1.length -2] != array1[array1.length -1]) ? 1 : 0;
+        exit -= (array2.length == 1) ? 1 : (array2[array2.length -2] != array2[array2.length -1]) ? 1 : 0;
+        return exit == 0;
+    }
+    public static void main (String[] args) {
+        System.out.println(isValidHexCode(new int[] {2}, new int[] {3, 3, 3, 3, 3}));
+    }
+}

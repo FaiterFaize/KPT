@@ -1,0 +1,8 @@
+public class some {
+    public static int FindZip (String a) {
+        return !a.contains("zip") ? -1 : a.indexOf("zip", a.indexOf("zip") + 1);
+    }
+    public static void main (String[] args) {
+        System.out.println(FindZip("all Zip files are compressed"));
+    }
+}

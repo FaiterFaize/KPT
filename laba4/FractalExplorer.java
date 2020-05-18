@@ -32,9 +32,14 @@ public class FractalExplorer {
 
     //События для кнопок мыши
     public class MouseH extends MouseAdapter {
-        public void Click (MouseEvent event) {
+        public void mouseClicked (MouseEvent event) {
+
+            //Получение координаты х, соответствующую координате пикселя Х
             double xCoord = FractalGenerator.getCoord(range.x, range.x + range.width, displaySize, event.getX());
+
+            //Получение координаты y, соответствующую координате пикселя Y
             double yCoord = FractalGenerator.getCoord(range.y, range.y + range.height, displaySize, event.getY());
+
             generator.recenterAndZoomRange(range, xCoord, yCoord, 0.5);
             drawFractal();
         }
@@ -66,15 +71,15 @@ public class FractalExplorer {
 
     //Отрисовка
     public void drawFractal () {
-        for (int i = 0; i < displaySize; i++) {
-            for (int j = 0; j < displaySize; j++) {
-                int numIt = generator.numIterations(FractalGenerator.getCoord(range.x, range.x + range.width, displaySize, i), FractalGenerator.getCoord(range.y, range.y + range.height, displaySize, j));
+        for (int x = 0; x < displaySize; x++) {
+            for (int y = 0; y < displaySize; y++) {
+                int numIt = generator.numIterations(FractalGenerator.getCoord(range.x, range.x + range.width, displaySize, x), FractalGenerator.getCoord(range.y, range.y + range.height, displaySize, y));
                 if (numIt == -1) {
-                    image.drawPixel(i, j, 0);
+                    image.drawPixel(x, y, 0);
                 } else {
                     float hue = 0.7f + (float) numIt / 200f;
                     int rgbColor = Color.HSBtoRGB(hue, 1f, 1f);
-                    image.drawPixel(i, j, rgbColor);
+                    image.drawPixel(x, y, rgbColor);
                 }
             }
         }

@@ -1,0 +1,13 @@
+public class some {
+    public static int solutions (int a, int b, int c) {
+        int D = b * b - 4 * a * c;
+        return  D < 0 ? 0 : (D > 0 ? 2 : 1);
+    }
+    public static void main (String[] args) {
+        Scanner i = new Scanner(System.in);
+        int a = i.nextInt();
+        int b = i.nextInt();
+        int c = i.nextInt();
+        System.out.println(solutions(a, b, c));
+    }
+}

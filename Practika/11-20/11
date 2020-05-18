@@ -1,0 +1,12 @@
+public class some {
+    public static String repeat (String a, int b) {
+        String exit = "";
+        for (char Char : a.toCharArray()) {
+            exit += Character.toString(Char).repeat(b);
+        }
+        return exit;
+    }
+    public static void main (String[] args) {
+        System.out.println(repeat("stop", 1));
+    }
+}

@@ -1,0 +1,12 @@
+public class some {
+    public static boolean checkPerfect (int a) {
+        int x = a == 0 ? -1 : 0;
+        for (int i = 1; i < a; i++) {
+            x += (a % i) == 0 ? i : 0;
+        }
+        return x == a;
+    }
+    public static void main (String[] args) {
+        System.out.println(checkPerfect(12));
+    }
+}

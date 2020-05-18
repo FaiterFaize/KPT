@@ -1,0 +1,8 @@
+public class some {
+    public static int boxSeq (int s) {
+        return  s % 2 == 0 ? s : s + 2;
+    }
+    public static void main (String[] args) {
+        System.out.println(boxSeq(2));
+    }
+}

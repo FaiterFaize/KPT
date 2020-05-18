@@ -1,0 +1,12 @@
+public class some {
+    public static boolean isAvgWhole (int[] array) {
+        int sum = 0;
+        for (int i = 0; i < array.length; i++) {
+        sum += i;
+        }
+        return sum % array.length == 0;
+    }
+    public static void main (String[] args) {
+        System.out.println(isAvgWhole(new int[]{9, 2, 2, 5}));
+    }
+}

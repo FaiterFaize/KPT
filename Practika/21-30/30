@@ -1,0 +1,14 @@
+public class some {
+    public static boolean rightTriangle (int x, int y, int z) {
+        //Находим гипотенузу
+        int gip = Math.max(x, Math.max(y, z));
+        //И два катета
+        int kat1 = (gip != x) ? x : (gip != y) ? y : z;
+        int kat2 = x + y + z - gip - kat1;
+        // Формула прямоугольного треугольника 
+        return (kat1 * kat1 + kat2 * kat2 == gip * gip);
+    }
+    public static void main (String[] args) {
+        System.out.println(rightTriangle(70, 130, 110));
+    }
+}

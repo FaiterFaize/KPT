@@ -1,0 +1,22 @@
+public class some {
+    public static int nextPrime (int a) {
+        boolean Prime = true;
+        int v = a;
+        //проверка на простое число
+        for (int i = 2; i < a && Prime; i++){
+            Prime = a % i != 0;
+        }
+        //Расчет следующего числа
+        while (!Prime){
+            v++;
+            Prime = true;
+            for (int i = 2; i < v && Prime; i++){
+                Prime = v % i != 0;
+            }
+        }
+        return v;
+    }
+    public static void main (String[] args) {
+        System.out.println(nextPrime(11));
+    }
+}

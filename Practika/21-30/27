@@ -1,0 +1,11 @@
+public class some {
+    public static boolean isKaprekar (int a) {
+        int d = a * a;
+        String a1 = Integer.toString(d).substring(0, Integer.toString(d).length() / 2).length() == 0 ? "0" : Integer.toString(d).substring(0, Integer.toString(d).length() / 2);
+        String a2 = Integer.toString(d).substring(Integer.toString(d).length() / 2);
+        return Integer.parseInt(a1) + Integer.parseInt(a2) == a;
+    }
+    public static void main (String[] args) {
+        System.out.println(isKaprekar(297));
+    }
+}

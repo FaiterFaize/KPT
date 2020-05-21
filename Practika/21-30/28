@@ -1,0 +1,12 @@
+public class some {
+    public static String longestZero (String a) {
+        StringBuilder v = new StringBuilder();
+        while (a.indexOf(v + "0") != -1) {
+            v.append("0");
+        }
+        return v.toString();
+    }
+    public static void main (String[] args) {
+        System.out.println(longestZero("100100100"));
+    }
+}

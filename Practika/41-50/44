@@ -1,0 +1,21 @@
+public class some {
+    public static int sumDigProd (int ... array) {
+        int result=0;
+        for (int value : array) {
+            result += value;
+        }
+        while (result >= 10) {
+            int tempResult = 1;
+            for (char ch : String.valueOf(result).toCharArray()) {
+                tempResult *= Integer.parseInt(String.valueOf((char) ch));
+        }
+            result=tempResult;
+        }
+        return array.length == 0 ? -1 : result;
+    }
+
+
+    public static void main (String[] args) {
+        System.out.println(sumDigProd(1, 2, 3, 4, 5, 6));
+    }
+}

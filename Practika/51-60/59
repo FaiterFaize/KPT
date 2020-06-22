@@ -1,0 +1,77 @@
+public class some {
+    public static boolean formula (String line) {
+        boolean isCorrect = true;
+        while (line.contains(" ")) {
+            line = line.substring(0, line.indexOf(" ")) + line.substring(line.indexOf(" ") + 1);
+        }
+        int pValue = 0;
+        int cValue = 0;
+        int i = 0;
+        for (String cPart : line.split("=")) {
+            pValue = cValue;
+            if (isCorrect) {
+                StringBuilder v1 = new StringBuilder();
+                StringBuilder v2 = new StringBuilder();
+                char move = 0;
+                for (char c : cPart.toCharArray()) {
+                    if (Character.isDigit(c)) {
+                        if (move == 0) {
+                            v1.append(c);
+                        } else
+                            v2.append(c);
+                    } else if (c == '+' || c == '*' || c == '/' || c == '-') {
+                        if (move == 0) {
+                            move = c;
+                        } else {
+                            v1.replace(0, v1.length(), mathResult(v1.toString(), v2.toString(), move));
+                            v2.delete(0, v2.length());
+                            move = c;
+                        }
+                    } else
+                        isCorrect=false;
+                }
+
+                v1.replace(0, v1.length(), mathResult(v1.toString(), v2.toString(), move));
+                v2.delete(0, v2.length());
+                cValue=Integer.parseInt(v1.toString());
+            } else
+                break;
+            if (i != 0) {
+                isCorrect = pValue == cValue;
+            } else
+                i++;
+        }
+        return isCorrect;
+    }
+
+
+    public static String mathResult(String v1,String v2,char move) {
+        int fValue = Integer.parseInt(v1);
+        int result = -1;
+        if (!v2.equals("")) {
+            int sValue = Integer.parseInt(v2);
+            switch (move) {
+                case '+':
+                    result = fValue + sValue;
+                    break;
+                case '-':
+                    result = fValue - sValue;
+                    break;
+                case '*':
+                    result = fValue * sValue;
+                    break;
+                case '/':
+                    result = fValue / sValue;
+                    break;
+            }
+        } else
+            result = fValue;
+        return String.valueOf(result);
+    }
+
+
+    public static void main (String[] args) {
+        System.out.println(formula("16 * 10 = 160 = 14 + 120"));
+    }
+}
+

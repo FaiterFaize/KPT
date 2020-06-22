@@ -1,0 +1,32 @@
+public class some {
+    public static String correctTitle (String line) {
+        String result = "";
+        String pos = "";
+        while (line.indexOf("-") != -1) {
+            pos += String.valueOf(line.indexOf(" - ")) + " ";
+            line = line.substring(0, line.indexOf("-")) + " " + line.substring(line.indexOf("-") + 1);
+        }
+        for (String string : line.split(" ")) {
+            if (string.length() == 0) {
+                result += string.toLowerCase() + " ";
+            } else if (string.length() == 1) {
+                result += Character.isLetter(string.charAt(0)) ? Character.toUpperCase(string.charAt(0)) + " " : string + " ";
+            } else if (string.toLowerCase().equals("and") || string.toLowerCase().equals("the") || string.toLowerCase().equals("of") || string.toLowerCase().equals("in")) {
+                result += string.toLowerCase() + " ";
+            } else
+                result += Character.toUpperCase(string.charAt(0)) + string.substring(1).toLowerCase() + " ";//save symbols
+        }
+        if (!pos.equals("")) {
+            for (String cPos : pos.split(" ")) {
+                result = result.substring(0, Integer.parseInt(cPos)) + "-" + result.substring(Integer.parseInt(cPos) + 1);
+            }
+        }
+        return result.substring(0,result.length()-1);
+    }
+
+
+    public static void main (String[] args) {
+        System.out.println(correctTitle("sansa stark, lady of winterfell."));
+    }
+}
+

@@ -1,0 +1,47 @@
+public class some {
+    public static boolean doesRhyme (String first, String second) {
+        boolean isRhyme = true;
+        while (!Character.isLetter(first.charAt(first.length() - 1)))
+            first = first.substring(0, first.length() - 1);
+        while (first.indexOf(" ") == 0) {
+            first = first.substring(1);
+        }
+        while (first.indexOf("  ") != -1) {
+            first = first.substring(0, first.indexOf("  ")) + first.substring(first.indexOf("  ") + 1);
+        }
+        while (!Character.isLetter(second.charAt(second.length() - 1))) {
+            second = second.substring(0, second.length() - 1);
+        }
+        while (second.indexOf(" ") == 0) {
+            second = second.substring(1);
+        }
+        while (second.indexOf("  ") != -1) {
+            second = second.substring(0, second.indexOf("  ")) + second.substring(second.indexOf("  ") + 1);
+        }
+        String endOfFirstLine = first.lastIndexOf(' ') != -1 ? (first.lastIndexOf(' ') != 0 ? first.substring(first.lastIndexOf(' ') + 1) : first.substring(1)) : first;
+        String endOfSecondLine = second.lastIndexOf(' ') != -1 ? (second.lastIndexOf(' ') != 0 ? second.substring(second.lastIndexOf(' ') + 1) : second.substring(1)) : first;
+        String Vowel="";
+        for (char Char:endOfFirstLine.toLowerCase().toCharArray()) {
+            Vowel += (Char == 'a' || Char == 'e' || Char == 'i' || Char == 'o' || Char == 'u') ? Char : "";
+        }
+        for (char Char:endOfSecondLine.toLowerCase().toCharArray()) {
+            if (Char == 'a' || Char == 'e' || Char == 'i' || Char == 'o' || Char == 'u') {
+                if (Vowel.length() != 0) {
+                    if (Vowel.indexOf(Char) != -1) {
+                        Vowel = first.substring(0, Vowel.indexOf(Char)) + Vowel.substring(Vowel.indexOf(Char) + 1);
+                    } else {
+                        isRhyme = false;
+                    }
+                } else {
+                    isRhyme = false;
+                }
+            }
+        }
+        return  Vowel.length() == 0 ? isRhyme : false;
+    }
+
+    public static void main (String[] args) {
+        System.out.println(doesRhyme("You are off to the races", "a splendid day."));
+    }
+}
+

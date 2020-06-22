@@ -1,0 +1,25 @@
+public class some {
+    public static String BMI (String weight, String height) {
+        double growth,heft;
+        try {
+            heft = Double.parseDouble(height.substring(0,height.indexOf(' ')));
+        } catch(NumberFormatException e){
+            heft = 0;
+        }
+        try {
+            growth = Double.parseDouble(weight.substring(0,weight.indexOf(' ')));
+        } catch(NumberFormatException e){
+            growth = 0;
+        }
+        heft= height.contains("inches") ? 0.0254 * heft : (height.contains("meters") ? heft : 0);
+        growth = weight.contains("pounds") ? 0.453592 * growth : (weight.contains("kilos") ? growth : 0);
+        double result = heft != 0 ? Math.round(10 * growth / (heft*heft)) : 0;
+        result=result/10;
+        return  result == 0 ? "Incorrect line" : (result < 18.5 ? result + " Underweight" : (result > 25 ? result + " Overweight" : result + " Normal weight"));
+    }
+
+    public static void main (String[] args) {
+        System.out.println(BMI("55 kilos", "1.65 meters"));
+    }
+}
+

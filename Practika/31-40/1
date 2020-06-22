@@ -1,0 +1,41 @@
+public class some {
+    public static String textChange (int x, int y, String z) {
+        StringBuilder result = new StringBuilder();
+        boolean error = true;
+        int count = 0;
+        while (z.indexOf(" ") == 0) {
+            z = z.substring(1);
+        }
+        while (z.indexOf("  ") != -1) {
+            z = z.substring(0, z.indexOf(" ")) + z.substring(z.indexOf(" ") + 1);
+        }
+        while (z.indexOf(9) != -1) {
+            z = z.substring(0, z.indexOf(9)) + z.substring(z.indexOf(9) + 1);
+        }
+        String[] Text = z.split(" ");
+        if (Text.length == x) {
+            for (String Word: Text) {
+                if (Word.length() > y) {
+                    error = false;
+                    break;
+                } else {
+                    if (count + Word.length() <= y) {
+                        count += Word.length();
+                        result.append(Word).append(" ");
+                    } else {
+                        result.delete(result.length() -1 , result.length());
+                        count = Word.length();
+                        result.append("\n").append(Word).append(" ");
+                    }
+                }
+            }
+        } else {
+            error = false;
+        }
+        return error ? (result.charAt(result.length() -1) == ' ' ? result.substring(0, result.length() -1) : result.toString()) : "Not";
+    }
+    public static void main (String[] args) {
+        System.out.println(textChange(10, 8, "hello my name is Bessie and this is my essay"));
+    }
+}
+

@@ -1,0 +1,19 @@
+public class some {
+    public static int bugger (int value) {
+        int count = 0;
+        while(value >= 10) {
+            int rValue = 1;
+            for (char Char:String.valueOf(value).toCharArray()) {
+                rValue *= Integer.parseInt(String.valueOf(Char));
+            }
+            value = rValue;
+            count++;
+        }
+        return count;
+    }
+
+    public static void main (String[] args) {
+        System.out.println(bugger(999));
+    }
+}
+

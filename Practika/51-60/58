@@ -1,0 +1,34 @@
+public class some {
+    public static String convertToRoman (int num) {
+        StringBuilder result = new StringBuilder();
+        if (num > 0 && num < 4000)
+        {
+            String[] array = new String[]{"I", "X", "C", "M", "V", "L", "D"};
+            String v = String.valueOf(num);
+            int pos = 0;
+            for (int j = v.length() - 1; j > -1; j--) {
+                int Value = Integer.parseInt(String.valueOf((char) v.charAt(j)));
+                if (Value < 4) {
+                    result.insert(0, array[pos].repeat(Value));
+                } else if (Value == 4) {
+                    result.insert(0, array[pos] + array[pos + 4]);
+                } else if (Value == 5) {
+                    result.insert(0, array[pos + 4]);
+                } else if (Value == 9) {
+                    result.insert(0, array[pos] + array[pos + 1]);
+                } else {
+                    StringBuilder tr = new StringBuilder();
+                    tr.append(array[pos].repeat(Value - 5));
+                    result.insert(0, array[pos + 4] + tr);
+                }
+                pos++;
+            }
+        }
+        return result.toString();
+    }
+
+
+    public static void main (String[] args) {
+        System.out.println(convertToRoman(10));
+    }
+}

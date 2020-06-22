@@ -1,0 +1,24 @@
+public class some {
+    public static String getSha256Hash (int num) {
+        String result="";
+        if (num > 0 && num < 1000) {
+            String[] variables_rus = new String[]{"", "один", "два", "три", "четыре", "пять", "шесть", "семь", "восемь", "девять","десять", "одиннадцать", "двенадцать", "ринадцать", "четырнадцать", "пятнадцать", "шестнадцать", "семнадцать", "восемнадцать", "девятнадцать", "десять", "двадцать", "тридцать", "сорок", "пятьдесят", "шестьдесят", "семьдесят", "восемьдесят", "девяносто", "сто", "двести", "триста", "четыреста", "пятьсот", "шестьсот", "семьсот", "восемьсот", "девятьсот"};
+            result += num / 100 != 0 ? variables_rus[num / 100 + 28] + " " : "";
+            if (num % 100 >= 20 || num % 100 < 10) {
+                result += (num / 10) % 10 != 0 ? variables_rus[(num / 10) % 10 + 19] + " " : "";
+                result += variables_rus[(num % 10)];
+            }
+            else
+                result += (num / 10) % 10 != 0 ? variables_rus[(num % 100)]+ " ": "";
+        }
+        else
+            result = "Неверное значение";
+        return num == 0 ? "ноль" : result;
+    }
+
+
+    public static void main (String[] args) {
+        System.out.println(getSha256Hash(18));
+    }
+}
+

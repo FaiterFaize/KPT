@@ -1,0 +1,20 @@
+public class some {
+    public static boolean trouble (long first, long second) {
+        boolean hasDigit = false;
+        int numOfDigit=1;
+        String firstValueInString = String.valueOf(first);
+        String secondValueInString = String.valueOf(second);
+        for (int i = 0; i < firstValueInString.length() - 1; i++) {
+            numOfDigit += firstValueInString.charAt(i) == firstValueInString.charAt(i + 1) ? 1 : -numOfDigit + 1;
+            if (numOfDigit == 3) {
+                hasDigit = secondValueInString.contains(firstValueInString.charAt(i) + "" + firstValueInString.charAt(i)) ? true : hasDigit;
+            }
+        }
+        return hasDigit;
+    }
+
+    public static void main (String[] args) {
+        System.out.println(trouble(33789, 12345337));
+    }
+}
+

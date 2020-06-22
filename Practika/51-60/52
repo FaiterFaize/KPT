@@ -1,0 +1,33 @@
+public class some {
+    public static String translateWord (String word) {
+        String result = "Not word";
+        String Word = "";
+        boolean isLetter = false;
+        if(word.length() != 0) {
+            for (char Char : word.toCharArray()) {
+                if (Character.isLetter(Char)) {
+                    Word += Character.toLowerCase(Char);
+                    isLetter = true;
+                } else
+                    Word += Char;
+            }
+            isLetter = Character.isLetter(Word.charAt(0)) ? isLetter : false;
+        }
+        if (!word.contains(" ") && (word.length() > 1 || isLetter)) {
+            if (Word.charAt(0) == 'a' || Word.charAt(0) == 'e' || Word.charAt(0) == 'o' || Word.charAt(0) == 'i' || Word.charAt(0) == 'u')
+                result = word+"yay";
+            else {
+                int vowelPos = 0;
+                while (vowelPos < Word.length() && Word.charAt(vowelPos) != 'a' && Word.charAt(vowelPos) != 'e' && Word.charAt(vowelPos) != 'o' && Word.charAt(vowelPos) != 'i' && Word.charAt(vowelPos) != 'u')
+                    vowelPos++;
+                result = word.substring(vowelPos) + word.substring(0,vowelPos) + "ay";
+            }
+        }
+        return isLetter ? result : word;
+    }
+
+
+    public static void main (String[] args) {
+        System.out.println(translateWord(""));
+    }
+}

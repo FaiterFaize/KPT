@@ -1,0 +1,31 @@
+public class some {
+    public static String sameVowelGroup (String[] array) {
+        String result = "";
+        String vowels = "";
+        for (char Char:array[0].toCharArray()) {
+            vowels += (Char == 'a' || Char == 'e' || Char == 'i' || Char == 'o' || Char == 'u') && vowels.indexOf(Char) == -1 ? Char : "";
+        }
+        for (String string : array) {
+            String tVowels = "";
+            boolean allVowel = true;
+            for (char Char : string.toCharArray()) {
+                if ((Char == 'a' || Char == 'e' || Char == 'i' || Char == 'o' || Char == 'u') && tVowels.indexOf(Char) == -1) {
+                    tVowels += Char;
+                }
+            }
+            if (tVowels.length()==vowels.length()) {
+                for (char cChar : vowels.toCharArray()) {
+                    allVowel = tVowels.indexOf(cChar) != -1 ? allVowel : false;
+                }
+                result += allVowel ? string + " " : "";
+            }
+        }
+        return result;
+    }
+
+
+    public static void main (String[] args) {
+        System.out.println(sameVowelGroup(new String[] {"many", "carriage", "emit", "apricot", "animal"}));
+    }
+}
+

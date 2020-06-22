@@ -1,0 +1,18 @@
+public class some {
+    public static int countUniqueBooks (String book, char endBook) {
+        String listOfUniqueCharacters = "";
+        while ((book.indexOf(endBook) != -1) && (book.indexOf(endBook,book.indexOf(endBook) + 1) != -1)) {
+            String tempLine = book.substring(book.indexOf(endBook) + 1,book.indexOf(endBook,book.indexOf(endBook) + 1));
+            book = book.substring(book.indexOf(endBook,book.indexOf(endBook) + 1) + 1);
+            for (char Char:tempLine.toCharArray()) {
+                listOfUniqueCharacters += listOfUniqueCharacters.indexOf(Char) == -1 ? Char : "";
+            }
+        }
+        return listOfUniqueCharacters.length();
+    }
+
+    public static void main (String[] args) {
+        System.out.println(countUniqueBooks("$AA$BBCATT$C$$B$", '$'));
+    }
+}
+

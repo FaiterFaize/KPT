@@ -1,0 +1,44 @@
+public class some {
+    public static int ulam (int num) {
+        int[] List = new int[num > 1 ? num : 2];
+        List[0] = 1;
+        List[1] = 2;
+        for (int i = 2; i < List.length; i++) {
+            List[i] = -1;
+        }
+        int curPos = 1;
+        String forbiddenValue = " ";
+        while (curPos < num - 1) {
+            int minSum = Integer.MAX_VALUE;
+            int i = 0;
+            while (List[i] != -1) {
+                int j = i + 1;
+                while (List[j] != -1) {
+                    if (i != j) {
+                        if (List[i] + List[j] < minSum && (List[i] + List[j]) > List[curPos] && !forbiddenValue.contains(" " + String.valueOf(List[i] + List[j]) + " ")) {
+                            minSum = List[i] + List[j];
+                        } else if (minSum == List[i] + List[j]) {
+                            if (!forbiddenValue.contains(" " + String.valueOf(List[i] + List[j]) + " ")) {
+                                forbiddenValue += minSum + " ";
+                            }
+                            j = 0;
+                            i = 0;
+                            minSum = Integer.MAX_VALUE;
+                        }
+                    }
+                    j++;
+                }
+                i++;
+            }
+            curPos++;
+            List[curPos] = minSum;
+        }
+        return num > 0 ? List[num-1] : -1;
+    }
+
+
+    public static void main (String[] args) {
+        System.out.println(ulam(206));
+    }
+}
+

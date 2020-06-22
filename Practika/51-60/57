@@ -1,0 +1,24 @@
+public class some {
+    public static String longestNonrepeatingSubstring (String line) {
+        String cLine = "";
+        String pLine = "";
+        cLine += line.charAt(0);
+        for (int i = 1; i < line.length(); i++) {
+            if (cLine.indexOf(line.charAt(i)) != -1) {
+                pLine = pLine.length() < cLine.length() ? cLine : pLine;
+                if (cLine.indexOf(line.charAt(i)) > cLine.length() - 1) {
+                    cLine = cLine.substring(cLine.indexOf(line.charAt(i) + 1));
+            } else
+                    cLine = "";
+            }
+            cLine += line.charAt(i);
+        }
+        return pLine.length() < cLine.length()? cLine : pLine;
+    }
+
+
+    public static void main (String[] args) {
+        System.out.println(longestNonrepeatingSubstring("abcda"));
+    }
+}
+

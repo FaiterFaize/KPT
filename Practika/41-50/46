@@ -1,0 +1,28 @@
+public class some {
+    public static boolean validateCard (long num) {
+        String Number =String.valueOf(num);
+        int summ = 0;
+        for (int i = Number.length() -2; i >= 0; i--) {
+            if ((i + 1) % 2 == 1) {
+                int temp = 2 * Integer.parseInt(String.valueOf((char) Number.charAt(i)));
+                while (temp >= 10) {
+                    int tempResult = 0;
+                    for (char ch : String.valueOf(temp).toCharArray()) {
+                        tempResult += Integer.parseInt(String.valueOf((char) ch));
+                    }
+                    temp = tempResult;
+                }
+                summ += temp;
+            } else
+                summ += Integer.parseInt(String.valueOf((char) Number.charAt(i)));
+        }
+        summ = 10 - (summ - 10 * (int)(summ / 10));
+        return Integer.valueOf(String.valueOf(Number.charAt(Number.length()-1))) == summ;
+    }
+
+
+    public static void main (String[] args) {
+        System.out.println(validateCard(1234567890123452L));
+    }
+}
+

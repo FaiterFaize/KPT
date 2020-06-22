@@ -1,0 +1,28 @@
+public class some {
+    public static String toCameCase (String z) {
+        String[] mass = z.split("_");
+        StringBuilder result = new StringBuilder(mass[0]);
+        for (String Word: mass) {
+            if (!result.toString().equals(Word)) {
+                result.append(Character.toUpperCase(Word.charAt(0))).append(Word.substring(1));
+            }
+        }
+        return result.toString();
+    }
+
+    public static String toSnakeCase (String text) {
+        String result = "";
+        for (char Char: text.toCharArray()) {
+            if ((Char != ' ') && (Char != '\n') && (Char != '\t')) {
+                result += Character.isUpperCase(Char) ? "_" + Character.toLowerCase(Char) : Char;
+            } else {
+                result += Char;
+            }
+        }
+        return result;
+    }
+    public static void main (String[] args) {
+        System.out.println(toCameCase("is_modal_open"));
+        System.out.println(toSnakeCase("helloEdabit"));
+    }
+}

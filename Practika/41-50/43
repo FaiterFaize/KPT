@@ -1,0 +1,39 @@
+public class some {
+    public static boolean canComplete (String line, String end) {
+        String tempLine = end;
+        boolean canComplete = true;
+        for(char cChar : line.toCharArray()) {
+            if (tempLine.indexOf(cChar) != -1) {
+                tempLine = tempLine.substring(0, tempLine.indexOf(cChar)) + tempLine.substring(tempLine.indexOf(cChar) + 1);
+            } else
+                canComplete = false;
+        }
+        String resultLine = "";
+        if (!line.equals("")) {
+            if (canComplete) {
+                int sPos = 0;
+                int bPos = 0;
+
+                while ((tempLine.length() != 0 && canComplete) || (sPos < line.length() && bPos < end.length()-1 && canComplete)) {
+                    if (sPos < line.length()&&line.charAt(sPos) == end.charAt(bPos)) {
+                        resultLine += line.charAt(sPos);
+                        bPos++;
+                        sPos++;
+                    } else if (tempLine.indexOf(end.charAt(bPos)) != -1) {
+                        resultLine += tempLine.charAt(tempLine.indexOf(end.charAt(bPos)));
+                        tempLine = tempLine.substring(0, tempLine.indexOf(end.charAt(bPos))) + tempLine.substring(tempLine.indexOf(end.charAt(bPos)) + 1);
+                        bPos++;
+                    } else
+                        canComplete = false;
+                }
+            }
+        }
+        return canComplete;
+    }
+
+
+    public static void main (String[] args) {
+        System.out.println(canComplete("tulb", "beautiful"));
+    }
+}
+

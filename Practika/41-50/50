@@ -1,0 +1,45 @@
+public class some {
+    public static String hexLattice (int num) {
+        int countOfDots = 1;
+        int CenteredHexagonalNumbers = 1;
+        int neededEvil=0;
+        int maxLength = 1;
+        while (num > CenteredHexagonalNumbers) {
+            countOfDots++;
+            maxLength += 2;
+            CenteredHexagonalNumbers = 1 + 6 * (countOfDots * (countOfDots - 1) / 2);
+            neededEvil += CenteredHexagonalNumbers/3>0 ? 1: 0;
+        }
+        countOfDots = CenteredHexagonalNumbers == num ? countOfDots: 0;
+        String result = "";
+        int disp = countOfDots % 2 == 0 ? 2 : 1;
+        boolean check = true;
+        int countOfSpace = 2 * (maxLength - countOfDots + 1);
+        for (int i = 0; i < maxLength; i++) {
+            if (check) {
+                countOfSpace -= 2;
+            } else
+                countOfSpace += 2;
+            if (countOfSpace == 0) {
+                check = false;
+            }
+            for (int j = 0; j < 2 * maxLength; j++) {
+                if (j < countOfSpace / 2) {
+                    result += " ";
+                } else if (j >= 2 * maxLength - countOfDots - countOfSpace / 2 + neededEvil)
+                    result += " ";
+                else if ((j + i + disp) % 2 == 0) {
+                    result += " ";
+                } else
+                    result += "o";
+            }
+            result += "\n";
+        }
+        return countOfDots != 0 ? result : "Invaid";
+    }
+
+
+    public static void main (String[] args) {
+        System.out.println(hexLattice(19));
+    }
+}

@@ -1,0 +1,44 @@
+public class some {
+    public static String[] getHashTags (String line) {
+        StringBuilder Line = new StringBuilder();
+        for (char ch : line.toCharArray()) {
+            if (ch != 0) {
+                if (Character.isLetter(ch)) {
+                    Line.append(Character.toLowerCase(ch));
+                } else if (ch == ' ') {
+                    Line.append(ch);
+                }
+            }
+        }
+        int size = Line.toString().split(" ").length > 2 ? 3 : Line.toString().split(" ").length;
+        String[] result = new String[size];
+        for (int i = 0; i < size; i++) {
+            result[i] = "";
+        }
+        for (String string : Line.toString().split(" ")) {
+            for (int i = 0; i < size; i++) {
+                if (result[i].length() < string.length()) {
+                    for (int j = size - 1; j >= 0; j--) {
+                        if (j != i) {
+                            result[j] = result[j - 1];
+                        } else {
+                            result[j] = string;
+                            break;
+                        }
+                    }
+                    break;
+                }
+            }
+        }
+        for (int i = 0; i < size; i++) {
+            result[i] = "#" + result[i];
+        }
+        return result;
+    }
+
+
+    public static void main (String[] args) {
+        System.out.println(getHashTags("Why You Will Probably Pay More for Your Christmas Tree This Year"));
+    }
+}
+

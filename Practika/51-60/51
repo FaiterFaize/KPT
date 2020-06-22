@@ -1,0 +1,27 @@
+public class some {
+    public static int bell (int arrayC) {
+        int[][] array = new int[arrayC + 2][arrayC + 2];
+        for (int i = 0; i < arrayC; i++)
+            for (int j = 0; j < arrayC; j++) {
+                array[i][j] = -1;
+            }
+        array[0][0] = 1;
+        int currentLast = 0;
+        for (int i = 1; i < arrayC; i++) {
+            array[i][0] = array[i - 1][currentLast];
+            currentLast = 0;
+            for (int j = 1; j < arrayC; j++) {
+                if (array[i - 1][j - 1] != -1) {
+                    array[i][j] = array[i][j - 1] + array[i - 1][j - 1];
+                    currentLast++;
+                }
+            }
+        }
+        return array[arrayC - 1][currentLast];
+    }
+
+
+    public static void main (String[] args) {
+        System.out.println(bell(3));
+    }
+}

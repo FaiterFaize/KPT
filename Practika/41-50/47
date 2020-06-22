@@ -1,0 +1,23 @@
+public class some {
+    public static String numToEng (int num) {
+        String result = "";
+        if (num > 0 && num < 1000) {
+            String[] variables_eng = new String[]{"", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen", "ten", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"};
+            result += num / 100 != 0 ? variables_eng[num / 100] + " hundred " : "";
+            if (num % 100 >= 20 || num % 100 < 10) {
+                result += (num / 10) % 10 != 0 ? variables_eng[(num / 10) % 10 + 19] + " " : "";
+                result += variables_eng[(num % 10)];
+            } else
+                result += (num / 10) % 10 != 0 ? variables_eng[(num % 100)] + " " : "";
+
+
+        }
+        return num == 0 ? "zero" : result;
+    }
+
+
+    public static void main (String[] args) {
+        System.out.println(numToEng(18));
+    }
+}
+

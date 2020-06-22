@@ -1,0 +1,38 @@
+import java.util.Arrays;
+
+public class some {
+    public static String stripUrlParams (String url, String ... parameters) {
+        String parametersLine ="";
+        if (url.contains("?") && url.indexOf("?") != url.length()){
+            parametersLine = url.substring(url.indexOf("?") + 1) + "&";
+            url = url.substring(0, url.indexOf("?"));
+        }
+        String resultP ="?";
+        int i = 0;
+        String tempP = "";
+        while (i<parametersLine.length()) {
+            if (parametersLine.charAt(i)!='&') {
+                tempP += parametersLine.charAt(i);
+            } else if (parametersLine.indexOf(tempP.split("=")[0],i + 1) == -1) {
+                if (parameters.length != 0) {
+                    if (!Arrays.asList(parameters).contains(tempP.split("=")[0]))
+                        resultP += tempP + "&";
+                }
+                else
+                    resultP += tempP + "&";
+                tempP = "";
+            }
+            else
+                tempP = "";
+            i++;
+        }
+        resultP = resultP.substring(0, resultP.length() - 1);
+        return url + resultP;
+    }
+
+
+    public static void main (String[] args) {
+        System.out.println(stripUrlParams("https://edabit.com?a=1&b=2&a=2", "b"));
+    }
+}
+

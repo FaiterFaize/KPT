@@ -1,0 +1,24 @@
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
+public class some {
+    public static String getSha256Hash (String line) {
+        byte[] hash = new byte[]{};
+        try {
+            hash = MessageDigest.getInstance("SHA-256").digest(line.getBytes(StandardCharsets.UTF_8));
+        } catch (NoSuchAlgorithmException e) {
+            System.out.println("I can`t do it: " + e);
+        }
+        StringBuilder hexString = new StringBuilder(new BigInteger(1, hash).toString(16));
+        while (hexString.length() < 32) {
+            hexString.insert(0, '0');
+        }
+        return hexString.toString();
+    }
+
+
+    public static void main (String[] args) {
+        System.out.println(getSha256Hash("Hey dude!"));
+    }
+}
+

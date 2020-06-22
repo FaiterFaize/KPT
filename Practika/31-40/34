@@ -1,0 +1,9 @@
+public class some {
+    public static double OverTime (double start, double end, double Payed, double factor) {
+        return end <= 17 ? (end - start) * Payed : ((17 - start) * Payed + (end - 17) * Payed * factor);
+    }
+
+    public static void main (String[] args) {
+        System.out.println("$" + OverTime(9, 17, 30, 1.5));
+    }
+}

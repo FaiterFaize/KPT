@@ -1,0 +1,28 @@
+import java.util.Arrays;
+
+public class some {
+    public static int[] encrypt (String text) {
+        int[] array = new int[text.length()];
+        array[0] = text.charAt(0);
+        for (int i = 1; i < text.length(); i++) {
+            array[i] = text.charAt(i) - text.charAt(i - 1);
+        }
+        return array;
+    }
+
+    public static String decrypt (int[] array) {
+        StringBuilder line = new StringBuilder();
+        line.append((char) array[0]);
+        for (int i = 1; i < array.length; i++) {
+            line.append((char) (array[i] + (int) line.charAt(i - 1)));
+        }
+        return line.toString();
+    }
+
+
+    public static void main (String[] args) {
+        System.out.println(Arrays.toString(encrypt("Sunshine")));
+        System.out.println(decrypt(new int[] { 72, 33, -73, 84, -12, -3, 13, -13, -68 }));
+    }
+}
+

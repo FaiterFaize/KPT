@@ -1,0 +1,37 @@
+public class some {
+    public static boolean validColor (String rgbCode) {
+        while (rgbCode.indexOf(' ') != -1) {
+            rgbCode = rgbCode.substring(0, rgbCode.indexOf(' ')) + rgbCode.substring(rgbCode.indexOf(' '));
+        }
+        boolean Color = false;
+        if ((rgbCode.indexOf('(') == 3 || rgbCode.indexOf('(') == 4) && rgbCode.indexOf(')') == rgbCode.length() - 1) {
+            String code = rgbCode.substring(0, rgbCode.indexOf('('));
+            Color = code.equals("rgb") ? true : code.equals("rgba");
+            rgbCode = rgbCode.substring(rgbCode.indexOf('(') + 1, rgbCode.length() - 1);
+            String[] value =rgbCode.split(",");
+            Color = Color ? code.length() == value.length : false;
+            for (int i = 0; i < value.length && Color; i++) {
+                for (char c : value[i].toCharArray())
+                    if (!Character.isDigit(c) && c != '.') {
+                        return false;
+                    } try {
+                    double Value = Double.parseDouble(value[i]);
+                    if (i != 3) {
+                        Color = Value >= 0 && Value <= 255 && (Value - (int) Value == 0);
+                    } else
+                        Color = Value >=0 && Value <= 1;
+                }
+                catch (Exception e) {
+                    Color = false;
+                }
+            }
+        }
+        return Color;
+    }
+
+
+    public static void main (String[] args) {
+        System.out.println(validColor("rgb(255,256,255)"));
+    }
+}
+
